@@ -9,10 +9,7 @@ export class Okta {
     this.widget = new OktaSignIn({
       baseUrl: 'https://dev-158606.oktapreview.com',
       clientId: 'RqjWvpvWO77qMGgDfukY',
-      redirectUri: 'http://localhost:4200',
-      authParams: {
-        responseType: ['id_token', 'token']
-      }
+      redirectUri: 'http://localhost:4200'
     });
   }
 

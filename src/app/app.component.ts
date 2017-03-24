@@ -18,8 +18,7 @@ export class AppComponent implements OnInit {
   showLogin() {
     this.oktaSignIn.renderEl({el: '#okta-login-container'}, (response) => {
       if (response.status === 'SUCCESS') {
-        this.oktaSignIn.tokenManager.add('authToken', response[1]);
-        this.user = response[0].claims.email;
+        this.user = response.claims.email;
       }
     });
   }

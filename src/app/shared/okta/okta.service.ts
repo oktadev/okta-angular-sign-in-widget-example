@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-declare let OktaSignIn: any;
+import * as OktaSignIn from '@okta/okta-signin-widget/dist/js/okta-sign-in.min.js';
 
 @Injectable()
 export class Okta {

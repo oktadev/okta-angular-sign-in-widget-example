@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Okta } from './shared/okta/okta.service';
 
 @Component({
@@ -6,8 +6,8 @@ import { Okta } from './shared/okta/okta.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'app works!';
+export class AppComponent {
+  title = 'app';
   user;
   oktaSignIn;
 
@@ -35,7 +35,8 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.oktaSignIn.signOut(() => {
-      location.reload();
+      this.showLogin();
+      this.user = undefined;
     });
   }
 }

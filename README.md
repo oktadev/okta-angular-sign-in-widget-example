@@ -33,7 +33,7 @@ OpenID Connect is built on top of the OAuth 2.0 protocol. It allows clients to v
 
 Login to your Okta account, or [create one](https://developer.okta.com/signup/) if you don't have one. Navigate to **Applications** and click on the **Add Application** button. Select **SPA** and click **Next**. On the next page, specify `http://localhost:4200` as a Base URI, Login redirect URI, and Logout redirect URI. Click **Done** and copy the generated `Client ID`.
 
-In `src/app/shared/okta/okta.service.ts`, set the `issuer` and paste your `clientId`.
+In `src/app/shared/okta/okta.service.ts`, set the `baseUrl` and paste your `clientId`.
 
 ```typescript
 this.widget = new OktaSignIn({
@@ -41,14 +41,16 @@ this.widget = new OktaSignIn({
   clientId: '{clientId}',
   redirectUri: 'http://localhost:4200',
   authParams: {
-    issuer: 'https://{yourOktaDomain}.com/oauth2/default'
+    issuer: 'default'
   }
 });
 ```
 
-**NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
+**TIP:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
 
 After making these changes, you should be able to log in with your credentials at `http://localhost:4200`.
+
+**NOTE:** You may experience an issue where the sign-in process seems to hang. Clicking anywhere in the browser window seems to solve this problem. I’m not sure why this happens. You can track this issue [here](https://github.com/okta/okta-signin-widget/issues/268).
 
 ## Links
 

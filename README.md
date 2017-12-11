@@ -48,6 +48,8 @@ this.widget = new OktaSignIn({
 
 **NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
 
+After making these changes, you should be able to log in with your credentials at `http://localhost:4200`.
+
 ## Links
 
 This example uses the following libraries provided by Okta:

@@ -1,27 +1,63 @@
 # Angular + Okta Sign-In Widget Example 
+ 
+This example app shows how to use Okta's Sign-In Widget in an Angular app.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.5.
+Please read [Build an Angular App with Okta's Sign-In Widget in 15 Minutes](https://developer.okta.com/blog/2017/03/27/angular-okta-sign-in-widget) to see how this app was created.
 
-## Development server
+**Prerequisites:** [Node.js](https://nodejs.org/).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+*[Okta](https://developer.okta.com/) has Authentication and User Management APIs that reduce development time with instant-on, scalable user infrastructure. Okta's intuitive API and expert support make it easy for developers to authenticate, manage and secure users and roles in any application.*
 
-## Code scaffolding
+* [Getting Started](#getting-started)
+* [Help](#help)
+* [Links](#links)
+* [License](#license)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+To install this example application, run the following commands:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```bash
+git clone git@github.com:oktadeveloper/okta-angular-sign-in-widget-example.git
+cd okta-angular-sign-in-widget-example
+yarn && yarn start
+```
 
-## Running unit tests
+This will get a copy of the project installed locally, install all of its dependencies and start the app.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Create an OIDC App in Okta
 
-## Running end-to-end tests
+You will need to [create an OIDC App in Okta](https://developer.okta.com/blog/2017/03/27/angular-okta-sign-in-widget#create-an-openid-connect-app-in-okta) to get your values to perform authentication. 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+OpenID Connect is built on top of the OAuth 2.0 protocol. It allows clients to verify the identity of the user and, as well as to obtain their basic profile information. To learn more, see [http://openid.net/connect](http://openid.net/connect/).
 
-## Further help
+Login to your Okta account, or [create one](https://developer.okta.com/signup/) if you don't have one. Navigate to **Applications** and click on the **Add Application** button. Select **SPA** and click **Next**. On the next page, specify `http://localhost:4200` as a Base URI, Login redirect URI, and Logout redirect URI. Click **Done** and copy the generated `Client ID`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+In `src/app/shared/okta/okta.service.ts`, set the `issuer` and paste your `clientId`.
+
+```typescript
+this.widget = new OktaSignIn({
+  baseUrl: 'https://{yourOktaDomain}.com',
+  clientId: '{clientId}',
+  redirectUri: 'http://localhost:4200',
+  authParams: {
+    issuer: 'https://{yourOktaDomain}.com/oauth2/default'
+  }
+});
+```
+
+**NOTE:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
+
+## Links
+
+This example uses the following libraries provided by Okta:
+
+* [Okta Sign-In Widget](https://github.com/okta/okta-signin-widget)
+
+## Help
+
+Please post any questions as comments on the [blog post](https://developer.okta.com/blog/2017/03/27/angular-okta-sign-in-widget), or visit our [Okta Developer Forums](https://devforum.okta.com/). You can also email developers@okta.com if would like to create a support ticket.
+
+## License
+
+Apache 2.0, see [LICENSE](LICENSE).

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Okta } from './shared/okta/okta.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class AppComponent {
   user;
   oktaSignIn;
 
-  constructor(private okta: Okta) {
+  constructor(private okta: Okta, private changeDetectorRef: ChangeDetectorRef) {
     this.oktaSignIn = okta.getWidget();
   }
 
@@ -19,6 +19,8 @@ export class AppComponent {
     this.oktaSignIn.renderEl({el: '#okta-login-container'}, (response) => {
       if (response.status === 'SUCCESS') {
         this.user = response.claims.email;
+        this.oktaSignIn.remove();
+        this.changeDetectorRef.detectChanges();
       }
     });
   }
@@ -27,6 +29,7 @@ export class AppComponent {
     this.oktaSignIn.session.get((response) => {
       if (response.status !== 'INACTIVE') {
         this.user = response.login
+        this.changeDetectorRef.detectChanges();
       } else {
         this.showLogin();
       }
@@ -35,8 +38,9 @@ export class AppComponent {
 
   logout() {
     this.oktaSignIn.signOut(() => {
-      this.showLogin();
       this.user = undefined;
+      this.changeDetectorRef.detectChanges();
+      this.showLogin();
     });
   }
 }

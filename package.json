@@ -1,6 +1,6 @@
 {
   "name": "angular-okta-example",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@okta/okta-signin-widget": "^2.5.0",
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "4.0.0-beta.2",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

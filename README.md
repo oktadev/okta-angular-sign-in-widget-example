@@ -18,7 +18,7 @@ Please read [Build an Angular App with Okta's Sign-In Widget in 15 Minutes](http
 To install this example application, run the following commands:
 
 ```bash
-git clone git@github.com:oktadeveloper/okta-angular-sign-in-widget-example.git
+git clone https://github.com/oktadeveloper/okta-angular-sign-in-widget-example.git
 cd okta-angular-sign-in-widget-example
 yarn && yarn start
 ```

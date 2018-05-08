@@ -20,7 +20,7 @@ To install this example application, run the following commands:
 ```bash
 git clone https://github.com/oktadeveloper/okta-angular-sign-in-widget-example.git
 cd okta-angular-sign-in-widget-example
-yarn && yarn start
+npm install
 ```
 
 This will get a copy of the project installed locally, install all of its dependencies and start the app.
@@ -48,9 +48,7 @@ this.widget = new OktaSignIn({
 
 **TIP:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
 
-After making these changes, you should be able to log in with your credentials at `http://localhost:4200`.
-
-**NOTE:** You may experience an issue where the sign-in process seems to hang. Clicking anywhere in the browser window seems to solve this problem. I’m not sure why this happens. You can track this issue [here](https://github.com/okta/okta-signin-widget/issues/268).
+After making these changes, you should be able to start the app (with `ng serve`) and log in with your credentials at `http://localhost:4200`.
 
 ## Links
 

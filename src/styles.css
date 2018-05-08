@@ -1,5 +1,5 @@
-/*@import '~@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
-@import '~@okta/okta-signin-widget/dist/css/okta-theme.css';*/
+/* @import '~@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
+@import '~@okta/okta-signin-widget/dist/css/okta-theme.css'; */
 @import "~bootstrap/dist/css/bootstrap.css";
 
 #okta-login-container {

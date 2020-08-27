@@ -37,16 +37,13 @@ In `src/app/shared/okta/okta.service.ts`, set the `baseUrl` and paste your `clie
 
 ```typescript
 this.widget = new OktaSignIn({
-  baseUrl: 'https://{yourOktaDomain}.com',
+  baseUrl: 'https://{yourOktaDomain}',
   clientId: '{clientId}',
-  redirectUri: 'http://localhost:4200',
-  authParams: {
-    issuer: 'default'
-  }
+  redirectUri: 'http://localhost:4200'
 });
 ```
 
-**TIP:** The value of `{yourOktaDomain}` should be something like `dev-123456.oktapreview.com`. Make sure you don't include `-admin` in the value!
+**TIP:** The value of `{yourOktaDomain}` should be something like `dev-123456.okta.com`. Make sure you don't include `-admin` in the value!
 
 After making these changes, you should be able to start the app (with `ng serve`) and log in with your credentials at `http://localhost:4200`.
 

@@ -15,31 +15,27 @@ export class AppComponent implements OnInit {
     this.oktaSignIn = okta.getWidget();
   }
 
-  showLogin() {
+  showLogin(): void {
     this.oktaSignIn.renderEl({el: '#okta-login-container'}, (response) => {
       if (response.status === 'SUCCESS') {
-        this.user = response.claims.email;
+        this.user = response.tokens.idToken.claims.email;
         this.oktaSignIn.remove();
         this.changeDetectorRef.detectChanges();
       }
     });
   }
 
-  ngOnInit() {
-    this.oktaSignIn.session.get((response) => {
-      if (response.status !== 'INACTIVE') {
-        this.user = response.login;
-        this.changeDetectorRef.detectChanges();
-      } else {
-        this.showLogin();
-      }
-    });
+  async ngOnInit(): Promise<void> {
+    try {
+      this.user = await this.oktaSignIn.authClient.token.getUserInfo();
+    } catch (error) {
+      this.showLogin();
+    }
   }
 
-  logout() {
-    this.oktaSignIn.signOut(() => {
+  logout(): void {
+    this.oktaSignIn.authClient.signOut(() => {
       this.user = undefined;
-      this.changeDetectorRef.detectChanges();
       this.showLogin();
     });
   }

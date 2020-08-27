@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import * as OktaSignIn from '@okta/okta-signin-widget';
+import OktaSignIn from '@okta/okta-signin-widget';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +9,9 @@ export class Okta {
 
   constructor() {
     this.widget = new OktaSignIn({
-      baseUrl: 'https://dev-158606.oktapreview.com',
-      clientId: '0oaexo3i16rvMNvOz0h7',
-      redirectUri: 'http://localhost:4200',
-      authParams: {
-        issuer: 'default'
-      }
+      baseUrl: 'https://dev-133320.okta.com',
+      clientId: '0oa5amf2sh3ETJwgI357',
+      redirectUri: 'http://localhost:4200'
     });
   }
 
